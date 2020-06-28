@@ -1,0 +1,11 @@
+{
+    "filewatcher.autoClearConsole": true,
+    "filewatcher.commands": [
+        {
+            "match": "bits.c",
+            "isAsync": true,
+            "cmd": "cd /home/zz/code/CSAPP-labs/datalab-handout; make; ./btest",
+            "event": "onFileChange"
+        }
+    ]
+}
