@@ -143,6 +143,10 @@ NOTES:
  */
 int bitXor(int x, int y)
 {
+  /*
+    a ^ b = (a & ~b) | (~a & b);
+    a | b = ~a & ~b;
+  */
   return ~(~(x & ~y) & ~(~x & y));
 }
 /* 
@@ -153,6 +157,9 @@ int bitXor(int x, int y)
  */
 int tmin(void)
 {
+  /*
+    仅符号位为 1 的二进制表示 tmin。
+  */
   return 1 << 31;
 }
 //2
@@ -165,7 +172,13 @@ int tmin(void)
  */
 int isTmax(int x)
 {
-  return !(x ^ ((1 << 31) - 1));
+  /*
+    ~tmax = tmin;
+    tmin - 1 = tmax;
+    用 x == (~x - 1) 来确定是否是 tmax，-1 会有同样的结果，使用 -1 + 1 = 0 来排除 x = -1。
+    因不允许使用 - ， 使用 -x = ~x + 1 代替减法运算。
+  */
+  return !(x ^ (~x + (~1 + 1))) & !!(x + 1);
 }
 /* 
  * allOddBits - return 1 if all odd-numbered bits in word set to 1
@@ -177,6 +190,9 @@ int isTmax(int x)
  */
 int allOddBits(int x)
 {
+  /*
+    生成奇数位全为 1 的掩码 mask，再测试 mask 与 x 后再比较是否等于 mask。
+  */
   int m1 = 0XAA;
   int m2 = (m1 << 8) | m1;
   int m3 = (m2 << 8) | m1;
@@ -192,6 +208,9 @@ int allOddBits(int x)
  */
 int negate(int x)
 {
+  /*
+    -x = ~x + 1;
+  */
   return ~x + 1;
 }
 //3
@@ -206,7 +225,7 @@ int negate(int x)
  */
 int isAsciiDigit(int x)
 {
-  return 2;
+  return !((x & ~0xF) ^ 0x30) & !(((x + 6) & ~0xF) ^ 0x30);
 }
 /* 
  * conditional - same as x ? y : z 
@@ -217,7 +236,12 @@ int isAsciiDigit(int x)
  */
 int conditional(int x, int y, int z)
 {
-  return 2;
+  /*
+    只能使用位运算，就要要构造一个表达式产生 y | 0 或 0 | z 作为返回值。
+    利用 ! 运算符结果只有 1 和 0，以及 0 - 1 = -1， 1 - 1 = 0 的性质，可构造出如下表达式。
+    题目中禁止使用 -，所以利用 -x = ~x + 1 构造减法。
+  */
+  return ((!!x + (~1 + 1)) & z) | ((!x + (~1 + 1)) & y);
 }
 /* 
  * isLessOrEqual - if x <= y  then return 1, else return 0 
@@ -228,7 +252,8 @@ int conditional(int x, int y, int z)
  */
 int isLessOrEqual(int x, int y)
 {
-  return 2;
+  int negate = 1 << 31;
+  return !((y + (~x + 1)) & negate) | (!!(y & negate));
 }
 //4
 /* 
@@ -241,7 +266,15 @@ int isLessOrEqual(int x, int y)
  */
 int logicalNeg(int x)
 {
-  return (x ^ 0);
+  /*
+    利用二分法将各个位与 B0 进行或运算，只要二进制表示中有 1 个 1，B0 就等于 1。取反后再 & 1 即可实现逻辑非。
+  */
+  x |= x >> 1;
+  x |= x >> 2;
+  x |= x >> 4;
+  x |= x >> 8;
+  x |= x >> 16;
+  return ~x & 1;
 }
 /* howManyBits - return the minimum number of bits required to represent x in
  *             two's complement
