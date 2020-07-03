@@ -1,34 +1,20 @@
 #include <stdio.h>
 #include <assert.h>
-#include <string.h>
-#include <stdlib.h>
+
+typedef unsigned packet_t;
 
 /*
-    A.sizeof 返回值是 unsigned 类型，int 会默认转换为 unsigned 结果永远大于 0，将 unsigned 转换为 int 即可正确比较。
+    A. 未将指定字节符号扩展为 32 位int。
+    B. 将对应字节左移至最高字节后利用 int 类型算术右移移动到最低位。
 */
-void copy_int(int val, void *buf, int maxbytes)
+int xbyte(packet_t word, int bytenum)
 {
-
-    if (maxbytes >= (int)sizeof(val))
-    {
-        memcpy(buf, (void *)&val, sizeof(val));
-    }
+   return (int)word << ((3 - bytenum) << 3) >> 24;
 }
 
 int main(int argc, char *argv[])
 {
-    int maxbytes = sizeof(int) * 10;
-    void *buf = malloc(maxbytes);
-    int val;
-
-    val = 0x12345678;
-    copy_int(val, buf, maxbytes);
-    assert(*(int *)buf == val);
-
-    val = 0xAABBCCDD;
-    copy_int(val, buf, 0);
-    assert(*(int *)buf != val);
-
-    free(buf);
+    assert(xbyte(0xAABBCCDD, 1) == 0xFFFFFFCC);
+    assert(xbyte(0x00112233, 2) == 0x11);
     return 0;
 }
