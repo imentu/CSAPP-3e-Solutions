@@ -383,46 +383,59 @@ unsigned floatScale2(unsigned uf)
  */
 int floatFloat2Int(unsigned uf)
 {
-  int sign = uf >> 31;
-  int exp = uf >> 23 & 0xFF;
-  int frac = uf & 0x7FFFFF;
-  int num = 0;
-  int pow, has_half, has_other, round;
-  if (exp < 127) // 小于 0 的数。
+  unsigned sig = uf >> 31;
+  unsigned exp = uf >> 23 & 0xFF;
+  unsigned frac = uf & 0x7FFFFF;
+  unsigned bias = 0x7F;
+
+  int num;
+  unsigned E;
+  unsigned M;
+
+  /*
+   * consider positive numbers
+   *
+   * 0 00000000 00000000000000000000000
+   *   ===>
+   * 0 01111111 00000000000000000000000
+   *   0 <= f < 1
+   * get integer 0
+   *
+   * 0 01111111 00000000000000000000000
+   *   ===>
+   * 0 (01111111+31) 00000000000000000000000
+   *   1 <= f < 2^31
+   * integer round to 0
+   *
+   * 0 (01111111+31) 00000000000000000000000
+   *   ===>
+   * greater
+   *   2^31 <= f < oo
+   * return 0x80000000
+   */
+  if (exp >= 0 && exp < 0 + bias) // 小于 1 时，舍入为 0。
   {
+    num = 0;
   }
-  else if (exp > 158) // 绝对值超出 2^31 的数。
+  else if (exp >= 31 + bias) // 溢出
   {
-    num = 1 << 31;
+    num = 0x80000000;
   }
   else
   {
-    /*
-      只剩处理规格化的值。
-      取得 exp 后对 num 移位即可，因 2^0 = 1，所以 num 可以直接取 1。
-    */
-    pow = exp - 127;
-    num = 1;
-    if (pow > 0)
+    E = exp - bias;
+    M = frac | 0x800000; // frac + 1
+    if (E > 23)
     {
-      num <<= pow;
+      num = M << (E - 23); // (frac + 1) * 2^n
     }
-    /*
-      处理舍入，若小数部分大于 0.5， round = 1。
-
-      不对呀，这就过了？  
-      凭啥？
-    */
-    has_half = !!(frac & 0x400000);
-    has_other = !!(frac & ~0x400000);
-    round = has_half && has_other;
-    num += round;
-    if (sign)
+    else
     {
-      num = ~num + 1;
+      num = M >> (23 - E); // 左移不完小数位时，向零舍入。
     }
   }
-  return num;
+
+  return sig ? -num : num;
 }
 /* 
  * floatPower2 - Return bit-level equivalent of the expression 2.0^x
