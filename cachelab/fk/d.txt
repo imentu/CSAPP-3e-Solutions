@@ -1,0 +1,438 @@
+2,12c2,12
+< S 7ff000398,8 miss 
+< S 7ff000390,8 miss 
+< S 7ff000378,8 miss 
+< S 7ff000370,8 miss 
+< S 7ff000384,4 miss 
+< L 7ff000384,4 hit 
+< S 7ff000388,4 miss 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> S ff000398,8 miss 
+> S ff000390,8 miss 
+> S ff000378,8 miss 
+> S ff000370,8 miss 
+> S ff000384,4 miss 
+> L ff000384,4 hit 
+> S ff000388,4 miss 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+14,18c14,18
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+20,24c20,24
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+26,30c26,30
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+32,36c32,36
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+38,42c38,42
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+44,48c44,48
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+50,54c50,54
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+56,64c56,64
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< M 7ff000384,4 hit hit 
+< L 7ff000384,4 hit 
+< S 7ff000388,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> M ff000384,4 hit hit 
+> L ff000384,4 hit 
+> S ff000388,4 hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+66,70c66,70
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+72,76c72,76
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+78,82c78,82
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+84,88c84,88
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+90,94c90,94
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+96,100c96,100
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+102,106c102,106
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+108,116c108,116
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< M 7ff000384,4 hit hit 
+< L 7ff000384,4 hit 
+< S 7ff000388,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> M ff000384,4 hit hit 
+> L ff000384,4 hit 
+> S ff000388,4 hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+118,122c118,122
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+124,128c124,128
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+130,134c130,134
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+136,140c136,140
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+142,146c142,146
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+148,152c148,152
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+154,158c154,158
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+160,168c160,168
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< M 7ff000384,4 hit hit 
+< L 7ff000384,4 hit 
+< S 7ff000388,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> M ff000384,4 hit hit 
+> L ff000384,4 hit 
+> S ff000388,4 hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+170,174c170,174
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+176,180c176,180
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+182,186c182,186
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+188,192c188,192
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+194,198c194,198
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+200,204c200,204
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< L 7ff000384,4 hit 
+< L 7ff000378,8 hit 
+< L 7ff000388,4 hit 
+---
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> L ff000384,4 hit 
+> L ff000378,8 hit 
+> L ff000388,4 hit 
+206,217c206,217
+< S 7ff00038c,4 hit 
+< L 7ff000388,4 hit 
+< L 7ff000370,8 hit 
+< L 7ff000384,4 hit 
+< L 7ff00038c,4 hit 
+< S 600a9c,4 hit 
+< M 7ff000388,4 hit hit 
+< L 7ff000388,4 hit 
+< M 7ff000384,4 hit hit 
+< L 7ff000384,4 hit 
+< L 7ff000390,8 miss eviction 
+< L 7ff000398,8 miss eviction 
+---
+> S ff00038c,4 hit 
+> L ff000388,4 hit 
+> L ff000370,8 hit 
+> L ff000384,4 hit 
+> L ff00038c,4 hit 
+> S 600a9c,4 miss eviction 
+> M ff000388,4 hit hit 
+> L ff000388,4 hit 
+> M ff000384,4 hit hit 
+> L ff000384,4 hit 
+> L ff000390,8 miss eviction 
+> L ff000398,8 miss eviction 
+219c219
+< hits:212 misses:26 evictions:10
+---
+> hits:211 misses:27 evictions:11
