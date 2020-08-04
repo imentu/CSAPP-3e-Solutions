@@ -65,6 +65,7 @@ unsigned getLruNode(LRU *l)
         if (last != first)
         {
             Node *previous = last->previous;
+            previous->next = NULL;
 
             last->next = first;
             last->previous = NULL;
@@ -83,7 +84,8 @@ void addLruNode(LRU *l, unsigned val)
     Node *n = malloc(sizeof(Node));
     if (n == NULL)
     {
-        puts("create Node failed.");
+        puts("create LRU Node failed.");
+        exit(0);
     }
     else
     {
@@ -92,13 +94,13 @@ void addLruNode(LRU *l, unsigned val)
         n->previous = NULL;
         if (l->first == NULL)
         {
-            l->first = n;
             l->last = n;
         }
         else
         {
-            l->first = n;
+            l->first->previous = n;
         }
+        l->first = n;
     }
 }
 
@@ -122,17 +124,18 @@ void setLruNode(LRU *l, unsigned val)
     }
     else
     {
-        if (n == l->first && n == l->last)
-        {
-            return;
-        }
-        else if (n == l->first)
+        if (n == l->first)
         {
             return;
         }
         else if (n == l->last)
         {
-            l->last = n->previous;
+            Node *previous = n->previous;
+            Node *first = l->first;
+            previous->next = NULL;
+            first->previous = n;
+
+            l->last = previous;
 
             n->next = l->first;
             n->previous = NULL;
@@ -143,8 +146,10 @@ void setLruNode(LRU *l, unsigned val)
         {
             Node *previous = n->previous;
             Node *next = n->next;
+            Node *first = l->first;
             previous->next = next;
             next->previous = previous;
+            first->previous = n;
 
             n->next = l->first;
             n->previous = NULL;
