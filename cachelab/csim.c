@@ -36,6 +36,7 @@ LRU *creatLRU()
 
 void display(LRU *l)
 {
+    puts("----------------------------------------");
     Node *n = l->first;
     printf("lru: first:%p, last:%p\n", l->first, l->last);
     while (n)
@@ -47,6 +48,7 @@ void display(LRU *l)
         }
         n = n->next;
     }
+    puts("----------------------------------------");
 }
 
 unsigned getLruNode(LRU *l)
@@ -57,58 +59,46 @@ unsigned getLruNode(LRU *l)
     }
     else
     {
-        // printf("before get:");
-        // display(l);
         Node *last = l->last;
         Node *first = l->first;
-        if (first != last)
+
+        if (last != first)
         {
-            first->previous = last;
-
-            last->previous->next = NULL;
-            l->last = last->previous;
-
-            last->previous = NULL;
+            Node *previous = last->previous;
 
             last->next = first;
+            last->previous = NULL;
+
+            first->previous = last;
 
             l->first = last;
+            l->last = previous;
         }
-        // printf("after get:");
-        // display(l);
         return last->val;
     }
 }
 
-/*
-    add 时要放最后？
-*/
 void addLruNode(LRU *l, unsigned val)
 {
     Node *n = malloc(sizeof(Node));
     if (n == NULL)
     {
-        puts("create LRU Node failed.");
-        exit(0);
+        puts("create Node failed.");
     }
     else
     {
-        // printf("before add:");
-        // display(l);
         n->val = val;
-        n->previous = NULL;
         n->next = l->first;
-        if (l->first != NULL)
+        n->previous = NULL;
+        if (l->first == NULL)
         {
-            l->first->previous = n;
+            l->first = n;
+            l->last = n;
         }
         else
         {
-            l->last = n;
+            l->first = n;
         }
-        l->first = n;
-        // printf("after add:");
-        // display(l);
     }
 }
 
@@ -132,29 +122,35 @@ void setLruNode(LRU *l, unsigned val)
     }
     else
     {
-        if (n == l->first)
+        if (n == l->first && n == l->last)
         {
             return;
         }
-        // printf("get node:%p\n", n);
-        // printf("before set:");
-        // display(l);
-        Node *previous = n->previous;
-        Node *next = n->next;
-        n->previous = NULL;
-        n->next = l->first;
-        if (previous != NULL)
+        else if (n == l->first)
         {
+            return;
+        }
+        else if (n == l->last)
+        {
+            l->last = n->previous;
+
+            n->next = l->first;
+            n->previous = NULL;
+
+            l->first = n;
+        }
+        else
+        {
+            Node *previous = n->previous;
+            Node *next = n->next;
             previous->next = next;
+            next->previous = previous;
+
+            n->next = l->first;
+            n->previous = NULL;
+
+            l->first = n;
         }
-        l->first->previous = n;
-        l->first = n;
-        if (l->last == n)
-        {
-            l->last = previous;
-        }
-        // printf("after set:");
-        // display(l);
     }
 }
 
@@ -269,13 +265,11 @@ void init(int argc, char **argv)
     }
 }
 
-void _L(unsigned address, unsigned size)
+void process(unsigned address, unsigned size)
 {
     int ss = (address & sm) >> b;
-    // int bs = address & bm;
     int ts = (address & tm) >> (s + b);
     int es = -1, fr = -1;
-    // printf("\n->ss:%d ts:%d\n", ss, ts);
     for (int i = 0; i < E; i++)
     {
         if (CACHE[ss][i].s != 0)
@@ -291,60 +285,30 @@ void _L(unsigned address, unsigned size)
             fr = fr == -1 ? i : fr;
         }
     }
-    // printf("->es:%d fr:%d\n", es, fr);
     if (es == -1)
     {
         misses += 1;
         vPrint(MISS);
         if (fr != -1)
         {
-            // if (ss == 0)
-            // {
-            //     display(CL_LRU[ss]);
-            // }
             setLruNode(CL_LRU[ss], fr);
-            // if (ss == 0)
-            // {
-            //     display(CL_LRU[ss]);
-            // }
             CACHE[ss][fr].s = 1;
             CACHE[ss][fr].t = ts;
-            // printf("%8x empty -> ss:%d, es:%d\n", address, ss, fr);
         }
         else
         {
             eviction += 1;
             vPrint(EVICTION);
-            // if (ss == 0)
-            // {
-            //     display(CL_LRU[ss]);
-            // }
             unsigned ae = getLruNode(CL_LRU[ss]);
-            // if (ss == 0)
-            // {
-            //     display(CL_LRU[ss]);
-            // }
-            // printf("->ae:%d\n", ae);
             CACHE[ss][ae].s = 1;
             CACHE[ss][ae].t = ts;
-            // printf("%8x eviction -> ss:%d, es:%d\n", address, ss, ae);
         }
     }
     else
     {
         hits += 1;
-        // if (ss == 0)
-        // {
-        //     display(CL_LRU[ss]);
-        // }
         setLruNode(CL_LRU[ss], es);
-        // if (ss == 0)
-        // {
-        //     display(CL_LRU[ss]);
-        // }
         vPrint(HIT);
-
-        // printf("%8x hit -> ss:%d, es:%d\n", address, ss, es);
     }
 }
 
@@ -361,14 +325,14 @@ void run()
             switch (buffer[1])
             {
             case 'L':
-                _L(address, size);
+                process(address, size);
                 break;
             case 'M':
-                _L(address, size);
-                _L(address, size);
+                process(address, size);
+                process(address, size);
                 break;
             case 'S':
-                _L(address, size);
+                process(address, size);
                 break;
             }
             if (v)
